@@ -40,6 +40,7 @@ while True:
         outputdata = open("404NotFound.html").read()
         # Send response message for file not found
         # Fill in start
+        connectionSocket.send('HTTP/1.1 404 Not Found\r\n\r\n'.encode())
         connectionSocket.send(outputdata.encode())
         print("Served 404NotFound.html to", addr[0])
         # Fill in end
