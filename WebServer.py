@@ -14,10 +14,7 @@ while True:
     print('Ready to serve...')
     connectionSocket, addr = serverSocket.accept()
     try:
-        while True:
-            message = connectionSocket.recv(1024).decode()
-            if message:
-                break
+        message = connectionSocket.recv(1024).decode()
         filename = message.split()[1][1:]
         print(addr[0], "requested", filename)
         # e.g. localhost/welcome.html, message.split()[1] would be /welcome.html,
