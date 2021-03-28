@@ -15,6 +15,9 @@ while True:
     connectionSocket, addr = serverSocket.accept()
     try:
         message = connectionSocket.recv(1024).decode()
+        if not message:
+            connectionSocket.close()
+            continue
         filename = message.split()[1][1:]
         print(addr[0], "requested", filename)
         # e.g. localhost/welcome.html, message.split()[1] would be /welcome.html,
