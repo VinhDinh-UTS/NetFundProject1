@@ -21,8 +21,14 @@ while True:
         # and filename would be welcome.html
         if not filename:
             filename = "index.html"
-        f = open(filename)
-        outputdata = f.read()
+        if filename == "favicon.ico":
+            outputdata = open("favicon.ico", "rb").read()
+            connectionSocket.send(outputdata)
+            print("Served", filename, "to", addr[0])
+            connectionSocket.close()
+            continue
+        else:
+            outputdata = open(filename).read()
         # Send one HTTP header line into socket
         # Fill in start
         connectionSocket.send('HTTP/1.1 200 OK\r\n'.encode())
