@@ -4,7 +4,7 @@ from socket import *
 serverSocket = socket(AF_INET, SOCK_STREAM)
 # Prepare a sever socket
 # Fill in start
-serverPort = 80
+serverPort = 8080
 serverSocket.bind(('', serverPort))
 serverSocket.listen(1)
 # Fill in end
@@ -56,5 +56,3 @@ while True:
         # Fill in start
         connectionSocket.close()
         # Fill in end
-serverSocket.close()
-exit()  # Terminate the program after sending the corresponding data
